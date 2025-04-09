@@ -12,56 +12,62 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class AuthController extends Controller
 {
     // Fungsi Register
-    public function register(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'username' => 'required|string|max:255',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
+// Tampilkan semua user
+public function index()
+{
+    $users = User::all();
+    return view('users.index', compact('users'));
+}
 
-        $user = User::create([
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-        ]);
+// Form tambah user
+public function create()
+{
+    return view('users.create');
+}
 
-        return response()->json([
-            'message' => 'Registrasi berhasil!',
-            'user' => $user
-        ], 201);
-    }
+// Simpan user baru
+public function store(Request $request)
+{
+    $request->validate([
+        'username' => 'required|string|max:255|unique:users',
+        'password' => 'required|string|min:6|confirmed',
+    ]);
 
-    // Fungsi Login
-    public function login(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'username' => 'required|string|max:255',
-            'password' => 'required|string|min:6',
-        ]);
+    User::create([
+        'username' => $request->username,
+        'password' => Hash::make($request->password),
+    ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
+    return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan');
+}
 
-        // Mencari user berdasarkan username
-        $user = User::where('username', $request->username)->first();
+// Form edit user
+public function edit(User $user)
+{
+    return view('users.edit', compact('user'));
+}
 
-        // Verifikasi apakah user ditemukan dan password cocok
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json([
-                'message' => 'Username atau Password salah'
-            ], 401);
-        }
+// Update data user
+public function update(Request $request, User $user)
+{
+    $request->validate([
+        'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+    ]);
 
-        // Membuat token untuk user
-        $token = JWTAuth::fromUser($user);
+    $user->update([
+        'username' => $request->username,
+        'password' => $request->password ? Hash::make($request->password) : $user->password,
+    ]);
 
-        return response()->json([
-            'message' => 'Login berhasil!',
-            'token' => $token
-        ]);
-    }
+    return redirect()->route('users.index')->with('success', 'User berhasil diperbarui');
+}
+
+// Hapus user
+public function destroy(User $user)
+{
+    $user->delete();
+    return redirect()->route('users.index')->with('success', 'User berhasil dihapus');
+}
+
 }
