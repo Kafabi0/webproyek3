@@ -16,7 +16,7 @@ Route::put('/produk/{produk}', [ProdukController::class, 'update'])->name('produ
 Route::delete('/produk/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
 
 
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/admin/users', [AuthController::class, 'index'])->name('users.index');
 Route::get('/admin/users/create', [AuthController::class, 'create'])->name('users.create');
