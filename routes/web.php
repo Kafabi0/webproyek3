@@ -25,3 +25,7 @@ Route::get('/admin/users/{user}/edit', [AuthController::class, 'edit'])->name('u
 Route::put('/admin/users/{user}', [AuthController::class, 'update'])->name('users.update');
 Route::delete('/admin/users/{user}', [AuthController::class, 'destroy'])->name('users.destroy');
 
+use App\Http\Controllers\DashboardController;
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
