@@ -27,6 +27,10 @@
             {{ request()->is('dashboard') ? 'bg-white text-black shadow' : 'hover:bg-green-200 text-black' }}">
             <i class="bi bi-house-door"></i><span>Dashboard</span>
         </a>
+        <a href="/admin/users" class="flex items-center space-x-2 p-2 rounded-md transition-all 
+            {{ request()->is('admin/users*') ? 'bg-white text-black shadow' : 'hover:bg-green-200 text-black' }}">
+            <i class="bi bi-person"></i><span>Pengguna</span>
+        </a>
         <a href="/pesanan" class="flex items-center space-x-2 p-2 rounded-md transition-all 
             {{ request()->is('pesanan*') ? 'bg-white text-black shadow' : 'hover:bg-green-200 text-black' }}">
             <i class="bi bi-card-checklist"></i><span>Lihat Pesanan</span>
@@ -40,6 +44,8 @@
             <i class="bi bi-graph-up"></i><span>Rekap Penjualan</span>
         </a>
     </nav>
+    
+    
 </aside>
 
 
