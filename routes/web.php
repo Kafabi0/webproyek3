@@ -1,8 +1,9 @@
 <?php
 use Illuminate\Support\Facades\Route;
-Route::get('/landingpage', function () {
+Route::get('/', function () {
     return view('landingpage');
-});
+})->name('landingpage');
+
 
 //jwt-auth secret [pwUV4D6RRIYLnt3zH1q3ecdfWu0ndkiH59NgOTnRPXq3mMzJe7AGD7nsYgNisvMo] set successfully.
 
