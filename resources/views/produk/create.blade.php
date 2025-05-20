@@ -18,6 +18,17 @@
                 <input type="text" name="price" id="price" class="form-control w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-green-400" required>
             </div>
 
+            <div class="mb-4">
+                <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
+                <select name="category" id="category" class="form-control w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-green-400" required>
+                    <option value="" disabled selected>Pilih Kategori</option>
+                    <option value="aksesoris">Aksesoris</option>
+                    <option value="makanan">Makanan</option>
+                    <option value="kandang">Kandang</option>
+                    <option value="kesehatan">Kesehatan</option>
+                </select>
+            </div>
+
             <div class="mb-6">
                 <label for="image" class="block text-sm font-medium text-gray-700 mb-1">Gambar (opsional)</label>
                 <input type="file" name="image" id="image" class="form-control w-full text-sm text-gray-500">

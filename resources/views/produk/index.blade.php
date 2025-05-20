@@ -18,6 +18,7 @@
                 <th>Gambar</th>
                 <th>Nama Produk</th>
                 <th>Harga</th>
+                <th>Kategori</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -33,6 +34,7 @@
                     </td>
                     <td>{{ $item->title }}</td>
                     <td>Rp {{ number_format($item->price, 0, ',', '.') }}</td>
+                    <td>{{ ucfirst($item->category) }}</td>
                     <td>
                         <a href="{{ route('produk.edit', $item) }}" class="btn btn-warning btn-sm">
                             <i class="bi bi-pencil-square"></i>

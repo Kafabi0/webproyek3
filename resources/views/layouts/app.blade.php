@@ -80,7 +80,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="dropdownMenuButton">
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ url('/landingpage') }}">Keluar</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/') }}">Keluar</a></li>
                         </ul>
                     </div>
                     

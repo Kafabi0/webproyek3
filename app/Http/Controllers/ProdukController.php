@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
@@ -20,8 +21,9 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'price' => 'required',
+            'title' => 'required|string',
+            'price' => 'required|numeric',
+            'category' => 'required|in:aksesoris,makanan,kandang,kesehatan',
             'image' => 'nullable|image',
         ]);
 
@@ -30,6 +32,7 @@ class ProdukController extends Controller
         Produk::create([
             'title' => $request->title,
             'price' => $request->price,
+            'category' => $request->category,
             'image' => $imagePath ? 'storage/' . $imagePath : null,
         ]);
 
@@ -44,8 +47,9 @@ class ProdukController extends Controller
     public function update(Request $request, Produk $produk)
     {
         $request->validate([
-            'title' => 'required',
-            'price' => 'required',
+            'title' => 'required|string',
+            'price' => 'required|numeric',
+            'category' => 'required|in:aksesoris,makanan,kandang,kesehatan',
             'image' => 'nullable|image',
         ]);
 
@@ -56,6 +60,7 @@ class ProdukController extends Controller
 
         $produk->title = $request->title;
         $produk->price = $request->price;
+        $produk->category = $request->category;
         $produk->save();
 
         return redirect()->route('produk.index')->with('success', 'Produk berhasil diperbarui.');
