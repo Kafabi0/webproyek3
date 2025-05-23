@@ -30,6 +30,9 @@
       animation: fadeInLogo 1.5s ease-out forwards;
       opacity: 0;
       margin: 0 auto;
+      border-radius: 50%;
+      box-shadow: 0 0 20px 10px rgba(0, 128, 0, 0.8); /* Green glow */
+      /* background-color: white; */
     }
 
     .cat {
