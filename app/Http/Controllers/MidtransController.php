@@ -19,6 +19,7 @@ class MidtransController extends Controller
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|exists:users,id',
             'produk_id' => 'required|exists:produks,id',
+            'status' => 'required|string|max:255',
             'address' => 'required|string|max:255', // Tambahkan validasi untuk alamat
             'phone_number' => 'required|string|max:20', // Tambahkan validasi untuk nomor telepon
         ]);
