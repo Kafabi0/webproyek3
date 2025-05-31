@@ -45,7 +45,7 @@ class ProdukController extends Controller
             'price' => 'required|numeric',
             'category' => 'required|string|max:255', // Validasi category
             'image' => 'nullable|string|max:255', // Asumsi Flutter mengirim nama file gambar (string)
-        ]);
+        ]); 
 
         // Buat produk baru di database
         $produk = Produk::create([

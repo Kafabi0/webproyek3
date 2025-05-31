@@ -30,3 +30,13 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+// routes/web.php
+use App\Http\Controllers\StoreStatusController;
+
+Route::get('/store-status', [StoreStatusController::class, 'index'])->name('store_status.index');
+Route::post('/update-store-status', [DashboardController::class, 'updateStoreStatus'])->name('update_store_status');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/store-status', [StoreStatusController::class, 'index']);
+    Route::put('/admin/store-status', [StoreStatusController::class, 'update']);
+});
