@@ -111,8 +111,8 @@
                     {{ request()->is('produk*') ? 'bg-white text-black shadow' : 'hover:bg-green-200 text-black' }}">
                     <i class="bi bi-box"></i><span>Produk</span>
                 </a>
-                <a href="/rekap" class="flex items-center space-x-2 p-2 rounded-md transition-all
-                    {{ request()->is('rekap*') ? 'bg-white text-black shadow' : 'hover:bg-green-200 text-black' }}">
+                <a href="{{ route('rekap-penjualan.index') }}" class="flex items-center space-x-2 p-2 rounded-md transition-all
+                    {{ request()->routeIs('rekap-penjualan.*') ? 'bg-white text-black shadow' : 'hover:bg-green-200 text-black' }}">
                     <i class="bi bi-graph-up"></i><span>Rekap Penjualan</span>
                 </a>
             </nav>
@@ -220,5 +220,7 @@
                 });
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @stack('scripts') {{-- Ini penting untuk menampung script dari view child --}}
 </body>
 </html>

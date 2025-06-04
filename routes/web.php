@@ -1,5 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PesananController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReportController;
 Route::get('/', function () {
     return view('landingpage');
 })->name('landingpage');
@@ -29,6 +32,11 @@ Route::delete('/admin/users/{user}', [AuthController::class, 'destroy'])->name('
 use App\Http\Controllers\DashboardController;
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/pesanan', [PesananController::class, 'index'])->name('pesanan.index');
+Route::get('/pesanan/export', [OrderController::class, 'export'])->name('pesanan.export');
+
+Route::get('/rekap-penjualan', [ReportController::class, 'index'])->name('rekap-penjualan.index');
 
 // routes/web.php
 use App\Http\Controllers\StoreStatusController;
